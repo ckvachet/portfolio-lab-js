@@ -187,6 +187,40 @@ Tests réalisés :
 Résultat :
 Micro-Dixie permet maintenant d’importer, exporter et préparer des données locales de test.
 
+## DV8 - Édition utilisateur et finition UI
+
+Date : 10/09/2026
+
+Objectif :
+Ajouter la modification d’un utilisateur existant et améliorer les libellés de l’interface.
+
+Fonctionnalités ajoutées :
+- bouton Modifier sur chaque ligne utilisateur ;
+- préremplissage du formulaire en mode édition ;
+- mise à jour d’un utilisateur existant ;
+- annulation du mode édition ;
+- sauvegarde des modifications dans localStorage ;
+- journalisation des modifications ;
+- remplacement des libellés Importer JSON et Exporter JSON par des libellés plus professionnels.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+
+Tests réalisés :
+- modification du nom d’un utilisateur ;
+- modification du rôle d’un utilisateur ;
+- annulation du mode édition ;
+- rechargement de la page après modification ;
+- vérification des statistiques ;
+- vérification de l’import/export après modification.
+
+Résultat :
+Micro-Dixie permet maintenant d’ajouter, modifier, supprimer, importer et exporter des utilisateurs.
+
 ## DV7 - Gestion avancée des données
 
 Date : 10/09/2026

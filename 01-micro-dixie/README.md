@@ -8,9 +8,9 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV7 - Gestion avancée des données.
+Version actuelle : DV8 - Édition utilisateur et finition UI.
 
-Cette version ajoute des fonctions de gestion des données locales : import/export JSON, chargement de données de démonstration et regroupement des actions de gestion des données. Les fonctionnalités existantes (recherche, filtres, statistiques, journal et sauvegarde locale) sont conservées.
+Cette version ajoute l'édition d'utilisateurs existants et affine les libellés de l'interface tout en conservant les fonctions de gestion des données (import/export/demo), la persistance et les statistiques.
 
 ## Fonctionnalités prévues
 
@@ -39,6 +39,11 @@ Cette version ajoute des fonctions de gestion des données locales : import/expo
 - journal d'activité local ;
 - action de vidage complet avec confirmation ;
 - amélioration visuelle du tableau de bord.
+
+- modification d’un utilisateur existant ;
+- annulation du mode édition ;
+- mise à jour des données sauvegardées après modification ;
+- libellés d’import/export plus professionnels.
 
 ## Méthode de travail
 

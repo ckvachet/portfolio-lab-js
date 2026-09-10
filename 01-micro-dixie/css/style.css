@@ -67,6 +67,9 @@ thead th{letter-spacing:0.2px}
 .activity-log .entry{padding:0.25rem 0;border-bottom:1px dashed var(--border)}
 .activity-log .entry:last-child{border-bottom:0}
 
+/* hide empty activity log to avoid empty box under data actions */
+.activity-log:empty{display:none}
+
 @media (max-width:900px){
 	.dashboard{flex-direction:column}
 	.dashboard-actions{width:100%}
