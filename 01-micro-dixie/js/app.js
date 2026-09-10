@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	const noResultsMessage = document.getElementById('noResultsMessage');
 
 	let users = [];
+	let journalEntries = [];
+
+	const statTotal = document.getElementById('statTotal');
+	const statAdmin = document.getElementById('statAdmin');
+	const statEditor = document.getElementById('statEditor');
+	const statObserver = document.getElementById('statObserver');
+	const activityLog = document.getElementById('activityLog');
+	const clearUsersBtn = document.getElementById('clearUsersBtn');
 
 	if (!form) {
 		console.warn('userForm introuvable');
@@ -126,15 +134,19 @@ document.addEventListener('DOMContentLoaded', function () {
 		saveUsers();
 		renderUsers();
 		showMessage('Utilisateur ajouté avec succès.', 'success');
+		addJournal('Utilisateur ajouté', user.name);
 	}
 
 	function deleteUser(id) {
+		const found = users.find(function (u) { return u.id === id; });
+		const name = found ? found.name : null;
 		users = users.filter(function (u) {
 			return u.id !== id;
 		});
 		saveUsers();
 		renderUsers();
 		if (!users.length) createEmptyState();
+		addJournal('Utilisateur supprimé', name);
 	}
 
 	// Ecouteur sur le formulaire
@@ -182,6 +194,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (searchInput) searchInput.value = '';
 			if (roleFilter) roleFilter.value = 'all';
 			renderUsers();
+			addJournal('Filtres réinitialisés', null);
+		});
+	}
+
+	if (clearUsersBtn) {
+		clearUsersBtn.addEventListener('click', function () {
+			var ok = confirm('Confirmer le vidage complet des utilisateurs ?');
+			if (!ok) return;
+			users = [];
+			saveUsers();
+			renderUsers();
+			addJournal('Vider la liste', null);
 		});
 	}
 
@@ -208,6 +232,40 @@ document.addEventListener('DOMContentLoaded', function () {
 			return matchesRole && inText;
 		});
 		filteredEl.textContent = String(filtered.length);
+		renderStats();
+	}
+
+	function renderStats() {
+		if (!statTotal) return;
+		const total = users.length;
+		const admin = users.filter(u => (u.role || '').toLowerCase().includes('admin')).length;
+		const editor = users.filter(u => (u.role || '').toLowerCase().includes('édit') || (u.role || '').toLowerCase().includes('edit')).length;
+		const observer = users.filter(u => (u.role || '').toLowerCase().includes('observ')).length;
+		statTotal.textContent = String(total);
+		statAdmin.textContent = String(admin);
+		statEditor.textContent = String(editor);
+		statObserver.textContent = String(observer);
+	}
+
+	function addJournal(action, name) {
+		const now = new Date();
+		const hh = String(now.getHours()).padStart(2, '0');
+		const mm = String(now.getMinutes()).padStart(2, '0');
+		const time = hh + ':' + mm;
+		const text = name ? `${time} - ${action} : ${name}` : `${time} - ${action}`;
+		journalEntries.unshift({ time: time, text: text });
+		renderJournal();
+	}
+
+	function renderJournal() {
+		if (!activityLog) return;
+		activityLog.innerHTML = '';
+		journalEntries.forEach(function (e) {
+			const div = document.createElement('div');
+			div.className = 'entry';
+			div.textContent = e.text;
+			activityLog.appendChild(div);
+		});
 	}
 
 	function createEmptyState() {

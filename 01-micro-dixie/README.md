@@ -8,9 +8,9 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV5 - Recherche et filtres utilisateurs.
+Version actuelle : DV6 - Tableau de bord avancé local.
 
-Cette version ajoute une recherche par nom/email, des filtres par rôle, des compteurs total et filtré, et des contrôles pour réinitialiser les filtres, tout en conservant la sauvegarde locale.
+Cette version transforme Micro-Dixie en un mini tableau de bord local avec cartes statistiques, journal d'activité et action de vidage, tout en conservant la recherche, les filtres et la sauvegarde locale.
 
 ## Fonctionnalités prévues
 
@@ -29,6 +29,11 @@ Cette version ajoute une recherche par nom/email, des filtres par rôle, des com
 - filtres par rôle ;
 - compteur total et compteur filtré ;
 - réinitialisation des filtres.
+
+- cartes statistiques par rôle ;
+- journal d'activité local ;
+- action de vidage complet avec confirmation ;
+- amélioration visuelle du tableau de bord.
 
 ## Méthode de travail
 

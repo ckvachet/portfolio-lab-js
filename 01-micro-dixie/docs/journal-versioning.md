@@ -114,12 +114,27 @@ Objectif :
 Ajouter une recherche par nom/email, des filtres par rôle, et des compteurs total/filtré sans casser la persistance locale.
 
 Fonctionnalités ajoutées :
-- champ de recherche par nom/email ;
-- filtre par rôle (Tous, Administrateur, Éditeur, Observateur) ;
-- compteur total et compteur des résultats affichés ;
-- bouton de réinitialisation des filtres ;
-- message si aucun résultat ne correspond ;
-- améliorations visuelles légères du tableau.
+
+Fichiers concernés :
+
+Tests réalisés :
+
+Résultat :
+La recherche et les filtres fonctionnent en mode local, avec persistance DV4 conservée.
+
+## DV6 - Tableau de bord avancé local
+
+Date : 10/09/2026
+
+Objectif :
+Renforcer Micro-Dixie avec des statistiques, un journal d'activité et une action de vidage contrôlée.
+
+Fonctionnalités ajoutées :
+- cartes statistiques par rôle ;
+- journal d'activité local ;
+- suivi des ajouts et suppressions ;
+- action de vidage complet avec confirmation ;
+- amélioration visuelle du tableau de bord.
 
 Fichiers concernés :
 - index.html
@@ -129,10 +144,12 @@ Fichiers concernés :
 - docs/journal-versioning.md
 
 Tests réalisés :
-- recherche par nom et email ;
-- filtre par rôle ;
-- réinitialisation des filtres ;
-- vérification que le localStorage reste fonctionnel après reload.
+- ajout de plusieurs utilisateurs ;
+- vérification des statistiques ;
+- suppression d'un utilisateur ;
+- vérification du journal d'activité ;
+- vidage complet avec confirmation ;
+- rechargement de la page après vidage.
 
 Résultat :
-La recherche et les filtres fonctionnent en mode local, avec persistance DV4 conservée.
+Le tableau de bord local dispose maintenant d'indicateurs et d'un suivi d'activité de session.
