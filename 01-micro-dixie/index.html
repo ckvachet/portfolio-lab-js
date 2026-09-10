@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Micro-Dixie — Tableau de bord</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container">
+			<h1>Micro-Dixie</h1>
+			<p class="subtitle">Tableau de bord d'administration locale</p>
+		</div>
+	</header>
+
+	<main class="container">
+		<section class="layout">
+			<aside class="panel form-panel" aria-labelledby="form-title">
+				<h2 id="form-title">Ajouter un utilisateur</h2>
+				<form class="user-form">
+					<label>
+						<span class="label-text">Nom</span>
+						<input type="text" name="name" placeholder="Nom">
+					</label>
+
+					<label>
+						<span class="label-text">Email</span>
+						<input type="email" name="email" placeholder="email@exemple.local">
+					</label>
+
+					<label>
+						<span class="label-text">Rôle</span>
+						<select name="role">
+							<option value="">-- Sélectionner --</option>
+							<option>Administrateur</option>
+							<option>Éditeur</option>
+							<option>Observateur</option>
+						</select>
+					</label>
+
+					<div class="form-actions">
+						<button type="button" class="btn">Ajouter</button>
+					</div>
+				</form>
+			</aside>
+
+			<section class="panel table-panel" aria-labelledby="table-title">
+				<h2 id="table-title">Utilisateurs</h2>
+				<div class="table-wrap">
+					<table>
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Email</th>
+								<th>Rôle</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="empty-state">
+								<td colspan="4">Aucun utilisateur enregistré pour le moment.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</section>
+	</main>
+
+	<footer class="site-footer container"><small>DV1 — Interface statique</small></footer>
+
+</body>
+</html>
