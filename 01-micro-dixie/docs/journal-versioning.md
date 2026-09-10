@@ -153,3 +153,69 @@ Tests réalisés :
 
 Résultat :
 Le tableau de bord local dispose maintenant d'indicateurs et d'un suivi d'activité de session.
+
+## DV7 - Gestion avancée des données
+
+Date : 10/09/2026
+
+Objectif :
+Ajouter des fonctions de gestion des données locales avec import, export et données de démonstration.
+
+Fonctionnalités ajoutées :
+- export JSON des utilisateurs ;
+- import JSON depuis un fichier local ;
+- vérification basique de la structure importée ;
+- protection contre l’écrasement en cas de fichier invalide ;
+- chargement de données de démonstration ;
+- regroupement des actions de données dans l'interface.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+
+Tests réalisés :
+- export d’une liste vide ;
+- export d’une liste contenant plusieurs utilisateurs ;
+- import d’un fichier JSON valide ;
+- import d’un fichier JSON invalide ;
+- chargement des données de démonstration ;
+- rechargement de la page après import ou chargement démo.
+
+Résultat :
+Micro-Dixie permet maintenant d’importer, exporter et préparer des données locales de test.
+
+## DV7 - Gestion avancée des données
+
+Date : 10/09/2026
+
+Objectif :
+Ajouter des fonctions de gestion des données locales avec import, export et données de démonstration.
+
+Fonctionnalités ajoutées :
+- export JSON des utilisateurs ;
+- import JSON depuis un fichier local ;
+- vérification basique de la structure importée ;
+- protection contre l’écrasement en cas de fichier invalide ;
+- chargement de données de démonstration ;
+- regroupement des actions de données dans l’interface.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+
+Tests réalisés :
+- export d’une liste vide ;
+- export d’une liste contenant plusieurs utilisateurs ;
+- import d’un fichier JSON valide ;
+- import d’un fichier JSON invalide ;
+- chargement des données de démonstration ;
+- rechargement de la page après import ou chargement démo.
+
+Résultat :
+Micro-Dixie permet maintenant d’importer, exporter et préparer des données locales de test.

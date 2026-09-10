@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	const activityLog = document.getElementById('activityLog');
 	const clearUsersBtn = document.getElementById('clearUsersBtn');
 
+	const importJsonBtn = document.getElementById('importJsonBtn');
+	const exportJsonBtn = document.getElementById('exportJsonBtn');
+	const loadDemoBtn = document.getElementById('loadDemoBtn');
+	const importFileInput = document.getElementById('importFileInput');
+
 	if (!form) {
 		console.warn('userForm introuvable');
 		return;
@@ -207,6 +212,113 @@ document.addEventListener('DOMContentLoaded', function () {
 			renderUsers();
 			addJournal('Vider la liste', null);
 		});
+	}
+
+	// Export JSON
+	if (exportJsonBtn) {
+		exportJsonBtn.addEventListener('click', function () {
+			exportUsers();
+		});
+	}
+
+	// Import JSON (trigger file input)
+	if (importJsonBtn && importFileInput) {
+		importJsonBtn.addEventListener('click', function () {
+			importFileInput.click();
+		});
+		importFileInput.addEventListener('change', handleImportFile);
+	}
+
+	// Load demo data
+	if (loadDemoBtn) {
+		loadDemoBtn.addEventListener('click', function () {
+			loadDemoData();
+		});
+	}
+
+	function exportUsers() {
+		try {
+			const data = users.map(u => ({ name: u.name, email: u.email, role: u.role }));
+			const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+			const url = URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = 'micro-dixie-users.json';
+			document.body.appendChild(a);
+			a.click();
+			a.remove();
+			URL.revokeObjectURL(url);
+			addJournal('Export JSON', `${data.length} utilisateur(s)`);
+			showMessage('Export JSON téléchargé.', 'success');
+		} catch (e) {
+			console.error('Erreur export', e);
+			showMessage('Erreur lors de l’exportation.', 'error');
+		}
+	}
+
+	function handleImportFile(e) {
+		const file = e.target.files && e.target.files[0];
+		if (!file) return;
+		const reader = new FileReader();
+		reader.onload = function (ev) {
+			try {
+				const parsed = JSON.parse(ev.target.result);
+				if (!validateImported(parsed)) {
+					showMessage('Fichier JSON invalide : structure attendue non respectée.', 'error');
+					importFileInput.value = '';
+					return;
+				}
+				// Map to users with generated IDs
+				const imported = parsed.map(function (it) {
+					return {
+						id: String(Date.now()) + '-' + Math.floor(Math.random() * 10000) + '-' + Math.floor(Math.random() * 1000),
+						name: String(it.name).trim(),
+						email: String(it.email).trim(),
+						role: String(it.role).trim()
+					};
+				});
+				// Replace current users with imported list
+				users = imported;
+				saveUsers();
+				renderUsers();
+				addJournal('Import JSON', `${imported.length} utilisateur(s)`);
+				showMessage('Importation terminée.', 'success');
+			} catch (err) {
+				console.error('Erreur import', err);
+				showMessage('Fichier JSON invalide ou lecture impossible.', 'error');
+			}
+			importFileInput.value = '';
+		};
+		reader.readAsText(file, 'utf-8');
+	}
+
+	function validateImported(data) {
+		if (!Array.isArray(data)) return false;
+		for (let i = 0; i < data.length; i++) {
+			const it = data[i];
+			if (!it || typeof it !== 'object') return false;
+			if (typeof it.name !== 'string' || !it.name.trim()) return false;
+			if (typeof it.email !== 'string' || !it.email.trim()) return false;
+			if (typeof it.role !== 'string' || !it.role.trim()) return false;
+		}
+		return true;
+	}
+
+	function loadDemoData() {
+		const demo = [
+			{ name: 'Alice Martin', email: 'alice@demo.local', role: 'Administrateur' },
+			{ name: 'Bruno Leroy', email: 'bruno@demo.local', role: 'Éditeur' },
+			{ name: 'Claire Simon', email: 'claire@demo.local', role: 'Observateur' }
+		];
+		// map with ids
+		const mapped = demo.map(function (d) {
+			return { id: String(Date.now()) + '-' + Math.floor(Math.random() * 10000) + '-' + Math.floor(Math.random() * 1000), name: d.name, email: d.email, role: d.role };
+		});
+		users = users.concat(mapped);
+		saveUsers();
+		renderUsers();
+		addJournal('Charger une démo', null);
+		showMessage('Données de démonstration ajoutées.', 'success');
 	}
 
 	function showMessage(text, type) {

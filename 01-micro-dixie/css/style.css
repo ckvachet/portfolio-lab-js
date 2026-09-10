@@ -72,6 +72,10 @@ thead th{letter-spacing:0.2px}
 	.dashboard-actions{width:100%}
 }
 
+/* Data actions (import/export/demo/clear) */
+.data-actions{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem}
+.data-actions .btn{padding:0.4rem 0.6rem}
+
 /* Table */
 .table-wrap{overflow:auto}
 table{width:100%;border-collapse:collapse;border-spacing:0}

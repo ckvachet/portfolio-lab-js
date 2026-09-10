@@ -37,7 +37,13 @@
 			</div>
 
 			<div class="dashboard-actions">
-				<button id="clearUsersBtn" class="btn" type="button">Vider les utilisateurs</button>
+				<div class="data-actions">
+					<input id="importFileInput" type="file" accept=".json" hidden>
+					<button id="importJsonBtn" class="btn" type="button">Importer JSON</button>
+					<button id="exportJsonBtn" class="btn" type="button">Exporter JSON</button>
+					<button id="loadDemoBtn" class="btn" type="button">Charger une démo</button>
+					<button id="clearUsersBtn" class="btn" type="button">Vider les utilisateurs</button>
+				</div>
 				<div id="activityLog" class="activity-log" aria-live="polite"></div>
 			</div>
 		</section>
@@ -115,8 +121,7 @@
 		</section>
 	</main>
 
-	<footer class="site-footer container"><small>DV6 — Tableau de bord avancé local</small></footer>
-</footer>
+	<footer class="site-footer container"><small>DV7 — Gestion avancée des données.</small></footer>
 
 	<script src="js/app.js"></script>
 
