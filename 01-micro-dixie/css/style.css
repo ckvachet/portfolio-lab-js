@@ -26,6 +26,24 @@ html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-seri
 .btn{background:var(--accent);color:#fff;border:none;padding:0.5rem 0.75rem;border-radius:6px;cursor:default}
 .btn.small{padding:0.25rem 0.5rem;font-size:0.85rem}
 
+/* Messages */
+.form-message{min-height:1.25rem;margin-bottom:0.5rem;color:var(--muted);font-size:0.95rem}
+.form-message.success{color:#1166aa}
+.form-message.error{color:#b33}
+
+/* Counter */
+.counter{margin-top:0.5rem;font-weight:600;color:var(--muted);font-size:0.95rem}
+
+/* Role badges */
+.role-badge{display:inline-block;padding:0.25rem 0.45rem;border-radius:999px;font-size:0.8rem;color:#fff}
+.role-admin{background:#0b66f6}
+.role-editor{background:#6f42c1}
+.role-observer{background:#6c757d}
+
+/* Delete button style */
+.btn.delete{background:transparent;color:#b33;border:1px solid transparent;padding:0.25rem 0.45rem;cursor:pointer}
+.btn.delete:hover{background:rgba(179,51,51,0.06)}
+
 /* Table */
 .table-wrap{overflow:auto}
 table{width:100%;border-collapse:collapse;border-spacing:0}

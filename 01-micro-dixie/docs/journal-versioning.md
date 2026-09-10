@@ -43,3 +43,36 @@ Fichiers concernés :
 - js/app.js
 - README.md
 - docs/journal-versioning.md
+
+## DV3 - Gestion utilisateur utilisable
+
+Date : 10/09/2026
+
+Objectif :
+Rendre la gestion utilisateur plus concrète avec validation, suppression, compteur et badges de rôle.
+
+Fonctionnalités ajoutées :
+- validation simple des champs ;
+- message d'erreur si le formulaire est incomplet ;
+- message de succès après ajout ;
+- suppression d'un utilisateur ;
+- compteur d'utilisateurs ;
+- badges visuels selon le rôle ;
+- retour automatique à l'état vide si le tableau ne contient plus d'utilisateur.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+
+Tests réalisés :
+- ajout avec formulaire vide ;
+- ajout avec formulaire complet ;
+- suppression d'un utilisateur ;
+- retour à l'état vide après suppression ;
+- vérification du compteur.
+
+Résultat :
+La gestion utilisateur de base est opérationnelle en test manuel.

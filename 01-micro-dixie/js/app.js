@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	const emailField = document.getElementById('userEmail');
 	const roleField = document.getElementById('userRole');
 	const tableBody = document.getElementById('usersTableBody');
+    const messageEl = document.getElementById('formMessage');
+    const countEl = document.getElementById('userCount');
 
 	if (!form) {
 		console.warn('userForm introuvable');
@@ -21,6 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		};
 
 		console.log('Valeurs du formulaire:', values);
+		// Validation simple
+		if (!values.name || !values.email || !values.role) {
+			showMessage('Veuillez compléter tous les champs avant d\'ajouter un utilisateur.', 'error');
+			return;
+		}
+
 		// Création d'une nouvelle ligne dans le tableau
 		if (tableBody) {
 			// Supprimer l'état vide s'il existe
@@ -38,14 +46,38 @@ document.addEventListener('DOMContentLoaded', function () {
 			tr.appendChild(tdEmail);
 
 			const tdRole = document.createElement('td');
-			tdRole.textContent = values.role || '';
+			// badge according to role
+			const badge = document.createElement('span');
+			badge.className = 'role-badge';
+			const roleLower = (values.role || '').toLowerCase();
+			if (roleLower.includes('admin')) badge.classList.add('role-admin');
+			else if (roleLower.includes('édit') || roleLower.includes('edit')) badge.classList.add('role-editor');
+			else badge.classList.add('role-observer');
+			badge.textContent = values.role || '';
+			tdRole.appendChild(badge);
 			tr.appendChild(tdRole);
 
 			const tdActions = document.createElement('td');
-			tdActions.textContent = 'À venir';
+			const delBtn = document.createElement('button');
+			delBtn.type = 'button';
+			delBtn.className = 'btn delete';
+			delBtn.textContent = 'Supprimer';
+			// delete handler
+			delBtn.addEventListener('click', function () {
+				tr.remove();
+				updateCount();
+				// if empty, restore empty-state
+				if (!tableBody.querySelector('tr')) {
+					createEmptyState();
+				}
+			});
+			tdActions.appendChild(delBtn);
 			tr.appendChild(tdActions);
 
 			tableBody.appendChild(tr);
+
+			updateCount();
+			showMessage('Utilisateur ajouté avec succès.', 'success');
 		}
 
 		// Réinitialiser le formulaire
@@ -61,4 +93,42 @@ document.addEventListener('DOMContentLoaded', function () {
 			form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
 		});
 	}
+
+	function showMessage(text, type) {
+		if (!messageEl) return;
+		messageEl.textContent = text;
+		messageEl.className = 'form-message ' + (type === 'error' ? 'error' : 'success');
+		// clear after 3s
+		clearTimeout(showMessage._t);
+		showMessage._t = setTimeout(function () {
+			messageEl.textContent = '';
+			messageEl.className = 'form-message';
+		}, 3000);
+	}
+
+	function updateCount() {
+		if (!countEl || !tableBody) return;
+		// count rows that are not empty-state
+		const rows = tableBody.querySelectorAll('tr');
+		let c = 0;
+		rows.forEach(function (r) {
+			if (!r.classList.contains('empty-state')) c++;
+		});
+		countEl.textContent = String(c);
+	}
+
+	function createEmptyState() {
+		if (!tableBody) return;
+		const tr = document.createElement('tr');
+		tr.className = 'empty-state';
+		const td = document.createElement('td');
+		td.colSpan = 4;
+		td.textContent = 'Aucun utilisateur enregistré pour le moment.';
+		tr.appendChild(td);
+		tableBody.appendChild(tr);
+		updateCount();
+	}
+
+	// initialise count
+	updateCount();
 });

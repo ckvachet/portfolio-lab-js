@@ -8,21 +8,18 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV2 - Ajout utilisateur en JavaScript.
+Version actuelle : DV3 - Gestion utilisateur utilisable.
 
-Cette version inclut l'ajout dynamique d'utilisateurs via un formulaire géré en JavaScript (sans persistance). L'interface reste simple et sans backend.
+Cette version rend le mini gestionnaire utilisateur testable en local : validation simple du formulaire, ajout et suppression d'utilisateurs, compteur et badges visuels par rôle.
 
 ## Fonctionnalités prévues
 
-- gestion des utilisateurs ;
-- rôles utilisateur ;
-- validation des formulaires ;
-- sauvegarde locale ;
-- recherche et filtres ;
-- journal d'activité ;
-- gestion de modules activables ;
-- import/export JSON ;
-- mode clair/sombre.
+- ajout dynamique d’utilisateurs ;
+- validation simple du formulaire ;
+- messages d’erreur et de succès ;
+- suppression d’un utilisateur ;
+- compteur d’utilisateurs ;
+- badges visuels par rôle.
 
 ## Méthode de travail
 
