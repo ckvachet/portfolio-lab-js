@@ -1,59 +1,76 @@
 document.addEventListener('DOMContentLoaded', function () {
+	const STORAGE_KEY = 'microDixieUsers';
 	const form = document.getElementById('userForm');
 	const nameField = document.getElementById('userName');
 	const emailField = document.getElementById('userEmail');
 	const roleField = document.getElementById('userRole');
 	const tableBody = document.getElementById('usersTableBody');
-    const messageEl = document.getElementById('formMessage');
-    const countEl = document.getElementById('userCount');
+	const messageEl = document.getElementById('formMessage');
+	const countEl = document.getElementById('userCount');
+
+	let users = [];
 
 	if (!form) {
 		console.warn('userForm introuvable');
 		return;
 	}
 
-	// Ecouteur sur le formulaire
-	form.addEventListener('submit', function (event) {
-		event.preventDefault();
+	// Load saved users and render
+	function loadUsers() {
+		try {
+			const raw = localStorage.getItem(STORAGE_KEY);
+			if (!raw) {
+				users = [];
+				return;
+			}
+			const parsed = JSON.parse(raw);
+			if (Array.isArray(parsed)) users = parsed;
+			else users = [];
+		} catch (e) {
+			console.error('Erreur lecture localStorage', e);
+			users = [];
+		}
+	}
 
-		const values = {
-			name: nameField ? nameField.value : null,
-			email: emailField ? emailField.value : null,
-			role: roleField ? roleField.value : null
-		};
+	function saveUsers() {
+		try {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+		} catch (e) {
+			console.error('Erreur sauvegarde localStorage', e);
+		}
+	}
 
-		console.log('Valeurs du formulaire:', values);
-		// Validation simple
-		if (!values.name || !values.email || !values.role) {
-			showMessage('Veuillez compléter tous les champs avant d\'ajouter un utilisateur.', 'error');
+	function renderUsers() {
+		if (!tableBody) return;
+		// clear
+		tableBody.innerHTML = '';
+
+		if (!users.length) {
+			createEmptyState();
+			updateCount();
 			return;
 		}
 
-		// Création d'une nouvelle ligne dans le tableau
-		if (tableBody) {
-			// Supprimer l'état vide s'il existe
-			const empty = tableBody.querySelector('.empty-state');
-			if (empty) empty.remove();
-
+		users.forEach(function (u) {
 			const tr = document.createElement('tr');
+			tr.dataset.id = u.id;
 
 			const tdName = document.createElement('td');
-			tdName.textContent = values.name || '';
+			tdName.textContent = u.name;
 			tr.appendChild(tdName);
 
 			const tdEmail = document.createElement('td');
-			tdEmail.textContent = values.email || '';
+			tdEmail.textContent = u.email;
 			tr.appendChild(tdEmail);
 
 			const tdRole = document.createElement('td');
-			// badge according to role
 			const badge = document.createElement('span');
 			badge.className = 'role-badge';
-			const roleLower = (values.role || '').toLowerCase();
+			const roleLower = (u.role || '').toLowerCase();
 			if (roleLower.includes('admin')) badge.classList.add('role-admin');
 			else if (roleLower.includes('édit') || roleLower.includes('edit')) badge.classList.add('role-editor');
 			else badge.classList.add('role-observer');
-			badge.textContent = values.role || '';
+			badge.textContent = u.role;
 			tdRole.appendChild(badge);
 			tr.appendChild(tdRole);
 
@@ -62,25 +79,57 @@ document.addEventListener('DOMContentLoaded', function () {
 			delBtn.type = 'button';
 			delBtn.className = 'btn delete';
 			delBtn.textContent = 'Supprimer';
-			// delete handler
 			delBtn.addEventListener('click', function () {
-				tr.remove();
-				updateCount();
-				// if empty, restore empty-state
-				if (!tableBody.querySelector('tr')) {
-					createEmptyState();
-				}
+				deleteUser(u.id);
 			});
 			tdActions.appendChild(delBtn);
 			tr.appendChild(tdActions);
 
 			tableBody.appendChild(tr);
+		});
 
-			updateCount();
-			showMessage('Utilisateur ajouté avec succès.', 'success');
+		updateCount();
+	}
+
+	function addUser(data) {
+		const user = {
+			id: String(Date.now()) + '-' + Math.floor(Math.random() * 10000),
+			name: data.name,
+			email: data.email,
+			role: data.role
+		};
+		users.push(user);
+		saveUsers();
+		renderUsers();
+		showMessage('Utilisateur ajouté avec succès.', 'success');
+	}
+
+	function deleteUser(id) {
+		users = users.filter(function (u) {
+			return u.id !== id;
+		});
+		saveUsers();
+		renderUsers();
+		if (!users.length) createEmptyState();
+	}
+
+	// Ecouteur sur le formulaire
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+
+		const values = {
+			name: nameField ? nameField.value.trim() : '',
+			email: emailField ? emailField.value.trim() : '',
+			role: roleField ? roleField.value : ''
+		};
+
+		// Validation simple
+		if (!values.name || !values.email || !values.role) {
+			showMessage("Veuillez compléter tous les champs avant d'ajouter un utilisateur.", 'error');
+			return;
 		}
 
-		// Réinitialiser le formulaire
+		addUser(values);
 		form.reset();
 	});
 
@@ -89,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (addButton) {
 		addButton.addEventListener('click', function (e) {
 			e.preventDefault();
-			// Déclenche l'événement submit sur le formulaire
 			form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
 		});
 	}
@@ -98,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (!messageEl) return;
 		messageEl.textContent = text;
 		messageEl.className = 'form-message ' + (type === 'error' ? 'error' : 'success');
-		// clear after 3s
 		clearTimeout(showMessage._t);
 		showMessage._t = setTimeout(function () {
 			messageEl.textContent = '';
@@ -107,18 +154,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function updateCount() {
-		if (!countEl || !tableBody) return;
-		// count rows that are not empty-state
-		const rows = tableBody.querySelectorAll('tr');
-		let c = 0;
-		rows.forEach(function (r) {
-			if (!r.classList.contains('empty-state')) c++;
-		});
-		countEl.textContent = String(c);
+		if (!countEl) return;
+		countEl.textContent = String(users.length);
 	}
 
 	function createEmptyState() {
 		if (!tableBody) return;
+		tableBody.innerHTML = '';
 		const tr = document.createElement('tr');
 		tr.className = 'empty-state';
 		const td = document.createElement('td');
@@ -129,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		updateCount();
 	}
 
-	// initialise count
-	updateCount();
+	// initialisation
+	loadUsers();
+	renderUsers();
 });

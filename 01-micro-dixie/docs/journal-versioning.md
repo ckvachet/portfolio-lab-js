@@ -76,3 +76,32 @@ Tests réalisés :
 
 Résultat :
 La gestion utilisateur de base est opérationnelle en test manuel.
+
+## DV4 - Sauvegarde locale avec localStorage
+
+Date : 10/09/2026
+
+Objectif :
+Conserver les utilisateurs ajoutés après rechargement de la page.
+
+Fonctionnalités ajoutées :
+- sauvegarde des utilisateurs dans localStorage ;
+- restauration automatique des utilisateurs au chargement ;
+- mise à jour du stockage après suppression ;
+- compteur synchronisé avec les données sauvegardées ;
+- état vide cohérent après rechargement.
+
+Fichiers concernés :
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+- index.html
+
+Tests réalisés :
+- ajout d’un utilisateur puis rechargement ;
+- suppression d’un utilisateur puis rechargement ;
+- vérification du compteur après rechargement ;
+- vérification de l’état vide après suppression complète.
+
+Résultat :
+La sauvegarde locale des utilisateurs est opérationnelle en test manuel.

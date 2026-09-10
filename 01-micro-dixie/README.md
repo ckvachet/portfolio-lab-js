@@ -8,9 +8,9 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV3 - Gestion utilisateur utilisable.
+Version actuelle : DV4 - Sauvegarde locale avec localStorage.
 
-Cette version rend le mini gestionnaire utilisateur testable en local : validation simple du formulaire, ajout et suppression d'utilisateurs, compteur et badges visuels par rôle.
+Cette version sauvegarde les utilisateurs localement dans `localStorage` pour conserver la liste après rechargement, tout en conservant la validation simple, la suppression et le compteur.
 
 ## Fonctionnalités prévues
 
@@ -20,6 +20,10 @@ Cette version rend le mini gestionnaire utilisateur testable en local : validati
 - suppression d’un utilisateur ;
 - compteur d’utilisateurs ;
 - badges visuels par rôle.
+
+- sauvegarde locale des utilisateurs ;
+- restauration des utilisateurs après rechargement ;
+- synchronisation du compteur avec les données sauvegardées.
 
 ## Méthode de travail
 
