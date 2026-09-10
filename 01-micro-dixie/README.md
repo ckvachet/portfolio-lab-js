@@ -8,9 +8,9 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV4 - Sauvegarde locale avec localStorage.
+Version actuelle : DV5 - Recherche et filtres utilisateurs.
 
-Cette version sauvegarde les utilisateurs localement dans `localStorage` pour conserver la liste après rechargement, tout en conservant la validation simple, la suppression et le compteur.
+Cette version ajoute une recherche par nom/email, des filtres par rôle, des compteurs total et filtré, et des contrôles pour réinitialiser les filtres, tout en conservant la sauvegarde locale.
 
 ## Fonctionnalités prévues
 
@@ -24,6 +24,11 @@ Cette version sauvegarde les utilisateurs localement dans `localStorage` pour co
 - sauvegarde locale des utilisateurs ;
 - restauration des utilisateurs après rechargement ;
 - synchronisation du compteur avec les données sauvegardées.
+
+- recherche par nom/email ;
+- filtres par rôle ;
+- compteur total et compteur filtré ;
+- réinitialisation des filtres.
 
 ## Méthode de travail
 

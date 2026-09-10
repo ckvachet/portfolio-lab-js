@@ -105,3 +105,34 @@ Tests réalisés :
 
 Résultat :
 La sauvegarde locale des utilisateurs est opérationnelle en test manuel.
+
+## DV5 - Recherche et filtres utilisateurs
+
+Date : 10/09/2026
+
+Objectif :
+Ajouter une recherche par nom/email, des filtres par rôle, et des compteurs total/filtré sans casser la persistance locale.
+
+Fonctionnalités ajoutées :
+- champ de recherche par nom/email ;
+- filtre par rôle (Tous, Administrateur, Éditeur, Observateur) ;
+- compteur total et compteur des résultats affichés ;
+- bouton de réinitialisation des filtres ;
+- message si aucun résultat ne correspond ;
+- améliorations visuelles légères du tableau.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+
+Tests réalisés :
+- recherche par nom et email ;
+- filtre par rôle ;
+- réinitialisation des filtres ;
+- vérification que le localStorage reste fonctionnel après reload.
+
+Résultat :
+La recherche et les filtres fonctionnent en mode local, avec persistance DV4 conservée.

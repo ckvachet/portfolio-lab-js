@@ -34,6 +34,13 @@ html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-seri
 /* Counter */
 .counter{margin-top:0.5rem;font-weight:600;color:var(--muted);font-size:0.95rem}
 
+/* Controls: search + filters */
+.controls{display:flex;gap:1rem;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+.search input[type="search"]{width:100%;max-width:360px;padding:0.45rem 0.6rem;border:1px solid var(--border);border-radius:6px}
+.filters{display:flex;gap:0.5rem;align-items:center}
+.filters select{padding:0.35rem 0.5rem;border:1px solid var(--border);border-radius:6px}
+.no-results{color:var(--muted);font-style:italic;margin-bottom:0.5rem}
+
 /* Role badges */
 .role-badge{display:inline-block;padding:0.25rem 0.45rem;border-radius:999px;font-size:0.8rem;color:#fff}
 .role-admin{background:#0b66f6}
@@ -43,6 +50,11 @@ html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-seri
 /* Delete button style */
 .btn.delete{background:transparent;color:#b33;border:1px solid transparent;padding:0.25rem 0.45rem;cursor:pointer}
 .btn.delete:hover{background:rgba(179,51,51,0.06)}
+
+/* Table visual improvement */
+table{background:transparent}
+tbody tr:hover{background:rgba(11,102,246,0.03)}
+thead th{letter-spacing:0.2px}
 
 /* Table */
 .table-wrap{overflow:auto}

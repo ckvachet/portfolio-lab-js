@@ -6,7 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	const roleField = document.getElementById('userRole');
 	const tableBody = document.getElementById('usersTableBody');
 	const messageEl = document.getElementById('formMessage');
-	const countEl = document.getElementById('userCount');
+	const totalEl = document.getElementById('userTotalCount');
+	const filteredEl = document.getElementById('userFilteredCount');
+	const searchInput = document.getElementById('searchInput');
+	const roleFilter = document.getElementById('roleFilter');
+	const resetFiltersBtn = document.getElementById('resetFilters');
+	const noResultsMessage = document.getElementById('noResultsMessage');
 
 	let users = [];
 
@@ -44,14 +49,33 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (!tableBody) return;
 		// clear
 		tableBody.innerHTML = '';
+		noResultsMessage.hidden = true;
 
+		// if no users at all -> show empty state
 		if (!users.length) {
 			createEmptyState();
 			updateCount();
 			return;
 		}
 
-		users.forEach(function (u) {
+		// apply search + filter
+		const q = (searchInput && searchInput.value || '').trim().toLowerCase();
+		const role = roleFilter ? roleFilter.value : 'all';
+
+		const filtered = users.filter(function (u) {
+			const matchesRole = role === 'all' || (u.role || '') === role;
+			const inText = !q || (u.name && u.name.toLowerCase().includes(q)) || (u.email && u.email.toLowerCase().includes(q));
+			return matchesRole && inText;
+		});
+
+		if (!filtered.length) {
+			// no match but users exist
+			noResultsMessage.hidden = false;
+			updateCount();
+			return;
+		}
+
+		filtered.forEach(function (u) {
 			const tr = document.createElement('tr');
 			tr.dataset.id = u.id;
 
@@ -142,6 +166,25 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+	// filters and search handlers
+	if (searchInput) {
+		searchInput.addEventListener('input', function () {
+			renderUsers();
+		});
+	}
+	if (roleFilter) {
+		roleFilter.addEventListener('change', function () {
+			renderUsers();
+		});
+	}
+	if (resetFiltersBtn) {
+		resetFiltersBtn.addEventListener('click', function () {
+			if (searchInput) searchInput.value = '';
+			if (roleFilter) roleFilter.value = 'all';
+			renderUsers();
+		});
+	}
+
 	function showMessage(text, type) {
 		if (!messageEl) return;
 		messageEl.textContent = text;
@@ -154,8 +197,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function updateCount() {
-		if (!countEl) return;
-		countEl.textContent = String(users.length);
+		if (totalEl) totalEl.textContent = String(users.length);
+		if (!filteredEl || !tableBody) return;
+		// compute filtered count
+		const q = (searchInput && searchInput.value || '').trim().toLowerCase();
+		const role = roleFilter ? roleFilter.value : 'all';
+		const filtered = users.filter(function (u) {
+			const matchesRole = role === 'all' || (u.role || '') === role;
+			const inText = !q || (u.name && u.name.toLowerCase().includes(q)) || (u.email && u.email.toLowerCase().includes(q));
+			return matchesRole && inText;
+		});
+		filteredEl.textContent = String(filtered.length);
 	}
 
 	function createEmptyState() {
