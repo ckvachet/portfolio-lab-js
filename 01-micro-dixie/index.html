@@ -43,10 +43,60 @@
 					<button id="exportJsonBtn" class="btn" type="button">Exporter les données</button>
 					<button id="loadDemoBtn" class="btn" type="button">Charger une démo</button>
 					<button id="clearUsersBtn" class="btn" type="button">Vider les utilisateurs</button>
+					<button id="themeToggleBtn" class="btn" type="button">Thème</button>
 				</div>
 				<div id="activityLog" class="activity-log" aria-live="polite"></div>
 			</div>
 		</section>
+
+		<!-- Modal utilisateur -->
+		<div id="userModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+			<div class="modal-overlay" id="modalOverlay"></div>
+			<div class="modal-panel" role="document">
+				<button class="modal-close" id="modalClose" aria-label="Fermer">✕</button>
+				<h3 id="modalTitle">Fiche utilisateur</h3>
+				<div class="modal-body">
+					<div class="modal-avatar" id="modalAvatar"></div>
+					<form id="modalForm">
+						<label>ID
+							<input id="modalId" type="text" readonly>
+						</label>
+						<label>Nom
+							<input id="modalName" type="text">
+						</label>
+						<label>Email
+							<input id="modalEmail" type="email">
+						</label>
+						<label>Rôle
+							<select id="modalRole">
+								<option>Administrateur</option>
+								<option>Éditeur</option>
+								<option>Observateur</option>
+							</select>
+						</label>
+						<label>Adresse
+							<input id="modalAddress" type="text">
+						</label>
+						<label>Localité
+							<input id="modalLocality" type="text">
+						</label>
+						<label>Téléphone privé
+							<input id="modalPrivatePhone" type="tel">
+						</label>
+						<label>Téléphone professionnel
+							<input id="modalProfessionalPhone" type="tel">
+						</label>
+						<label>Date de naissance
+							<input id="modalBirthDate" type="date">
+						</label>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="modalSave" class="btn">Enregistrer</button>
+					<button id="modalCancel" class="btn">Annuler</button>
+				</div>
+			</div>
+		</div>
 		<section class="layout">
 			<aside class="panel form-panel" aria-labelledby="form-title">
 				<h2 id="form-title">Ajouter un utilisateur</h2>
@@ -105,6 +155,7 @@
 					<table>
 						<thead>
 							<tr>
+								<th>Avatar</th>
 								<th>Nom</th>
 								<th>Email</th>
 								<th>Rôle</th>
@@ -113,7 +164,7 @@
 						</thead>
 						<tbody id="usersTableBody">
 							<tr class="empty-state">
-								<td colspan="4">Aucun utilisateur enregistré pour le moment.</td>
+								<td colspan="5">Aucun utilisateur enregistré pour le moment.</td>
 							</tr>
 						</tbody>
 					</table>
@@ -122,9 +173,11 @@
 		</section>
 	</main>
 
-	<footer class="site-footer container"><small>DV8 — Édition utilisateur et finition UI</small></footer>
+	<footer class="site-footer container"><small>DV9 — Fiche utilisateur avancée</small></footer>
 
 	<script src="js/app.js"></script>
+
+<button id="backToTop" class="back-to-top" aria-label="Retour en haut">↑</button>
 
 </body>
 </html>

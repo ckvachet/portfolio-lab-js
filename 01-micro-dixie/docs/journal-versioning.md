@@ -221,6 +221,45 @@ Tests réalisés :
 Résultat :
 Micro-Dixie permet maintenant d’ajouter, modifier, supprimer, importer et exporter des utilisateurs.
 
+## DV9 - Fiche utilisateur avancée
+
+Date : 10/09/2026
+
+Objectif :
+Ajouter une fiche utilisateur complète en modale avec informations complémentaires, ID local, avatar par initiales et amélioration visuelle.
+
+Fonctionnalités ajoutées :
+- modale d’édition utilisateur ;
+- ID utilisateur local unique (format USR-0001) ;
+- avatar par initiales ;
+- champs adresse, localité, téléphone privé, téléphone professionnel et date de naissance ;
+- sauvegarde localStorage des données enrichies ;
+- import/export compatible avec les nouveaux champs ;
+- données de démonstration enrichies ;
+- mode clair/sombre sauvegardé ;
+- bouton retour haut de page ;
+- amélioration visuelle générale.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+
+Tests réalisés :
+- ouverture et fermeture de la modale ;
+- modification des informations détaillées ;
+- annulation d’une modification ;
+- sauvegarde après rechargement ;
+- import et export de données enrichies ;
+- chargement des données de démonstration ;
+- test du mode clair/sombre ;
+- test du retour haut de page.
+
+Résultat :
+Micro-Dixie propose maintenant une fiche utilisateur détaillée et une interface plus proche d’un outil d’administration complet.
+
 ## DV7 - Gestion avancée des données
 
 Date : 10/09/2026

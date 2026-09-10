@@ -8,9 +8,9 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV8 - Édition utilisateur et finition UI.
+Version actuelle : DV9 - Fiche utilisateur avancée.
 
-Cette version ajoute l'édition d'utilisateurs existants et affine les libellés de l'interface tout en conservant les fonctions de gestion des données (import/export/demo), la persistance et les statistiques.
+Cette version ajoute une fiche utilisateur complète en modale, un identifiant local par utilisateur, des champs enrichis (adresse, localité, téléphones, date de naissance), un mode clair/sombre, un bouton retour haut et une export/import compatibles.
 
 ## Fonctionnalités prévues
 
@@ -40,10 +40,15 @@ Cette version ajoute l'édition d'utilisateurs existants et affine les libellés
 - action de vidage complet avec confirmation ;
 - amélioration visuelle du tableau de bord.
 
-- modification d’un utilisateur existant ;
-- annulation du mode édition ;
-- mise à jour des données sauvegardées après modification ;
-- libellés d’import/export plus professionnels.
+
+- fiche utilisateur détaillée en modale ;
+- ID utilisateur local (USR-xxxx) ;
+- avatar par initiales ;
+- champs adresse, localité, téléphone privé, téléphone professionnel et date de naissance ;
+- import/export compatibles avec les champs enrichis ;
+- mode clair/sombre ;
+- bouton retour haut de page ;
+- amélioration visuelle générale.
 
 ## Méthode de travail
 
