@@ -26,8 +26,20 @@ Tests réalisés :
 - vérification visuelle de la structure dans VS Code ;
 - vérification de la présence des fichiers attendus.
 
-Résultat :
-DV0 en cours de validation.
+## DV2 - Ajout utilisateur en JavaScript
 
-Notes :
-Aucun code fonctionnel n'est encore ajouté à cette étape. Le projet prépare sa base de travail avant la création de l'interface DV1.
+Date : 10/09/2026
+
+Fonctionnalités ajoutées :
+- lecture des champs du formulaire ;
+- écoute de l'événement submit ;
+- prévention du rechargement de la page ;
+- ajout dynamique d'une ligne dans le tableau ;
+- suppression de l'état vide après le premier ajout ;
+- remise à zéro du formulaire après ajout.
+
+Fichiers concernés :
+- index.html
+- js/app.js
+- README.md
+- docs/journal-versioning.md

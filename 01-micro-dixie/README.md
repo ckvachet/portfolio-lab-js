@@ -8,9 +8,9 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV0 - Fondation du projet.
+Version actuelle : DV2 - Ajout utilisateur en JavaScript.
 
-Cette version sert à préparer la structure du projet, la documentation de départ et le journal de versioning avant le développement de l'interface.
+Cette version inclut l'ajout dynamique d'utilisateurs via un formulaire géré en JavaScript (sans persistance). L'interface reste simple et sans backend.
 
 ## Fonctionnalités prévues
 
@@ -30,6 +30,4 @@ Le projet est construit par petites versions appelées DV.
 
 Chaque étape est développée dans VS Code, testée, documentée puis versionnée avec Git et GitHub.
 
-L'intelligence artificielle est utilisée comme appui technique pour structurer les étapes, relire le code, proposer des corrections et améliorer la documentation.
-
-Les choix finaux, les tests et les validations restent réalisés manuellement.
+L'intelligence artificielle est utilisée comme appui technique, relire le code, proposer des corrections et améliorer la documentation.
