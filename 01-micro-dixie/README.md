@@ -8,9 +8,9 @@ L'objectif est de construire une interface simple, propre et évolutive permetta
 
 ## Version actuelle
 
-Version actuelle : DV9 - Fiche utilisateur avancée.
+Version actuelle : DV10 - Stabilisation finale dashboard CRM.
 
-Cette version ajoute une fiche utilisateur complète en modale, un identifiant local par utilisateur, des champs enrichis (adresse, localité, téléphones, date de naissance), un mode clair/sombre, un bouton retour haut et une export/import compatibles.
+Micro-Dixie CRM est un dashboard CRM local de démonstration pédagogique : sidebar fixe, header système avec heure locale, footer professionnel, tableau utilisateurs, fiches utilisateur dockables (dock multi-fenêtres), historique de versioning, export CSV/JSON et impression fiche, journal d'activité, notifications, thème clair/sombre, graphique animé de répartition des rôles, gestion actif/inactif et sécurité de suppression. Projet pédagogique — données fictives uniquement, aucun backend.
 
 ## Fonctionnalités prévues
 
@@ -57,3 +57,11 @@ Le projet est construit par petites versions appelées DV.
 Chaque étape est développée dans VS Code, testée, documentée puis versionnée avec Git et GitHub.
 
 L'intelligence artificielle est utilisée comme appui technique, relire le code, proposer des corrections et améliorer la documentation.
+
+## DV9.5 — Header, footer et navigation
+
+Cette version prépare une navigation globale pour le Portfolio Lab JS : un header moderne (effet glass léger, menu responsive) et un footer professionnel. `Micro-Dixie` reste une démo intégrée au laboratoire et un lien vers l'accueil a été ajouté. Les chemins relatifs sont préservés.
+
+## DV10 — Stabilisation finale dashboard CRM
+
+Version finale de présentation : harmonisation visuelle (header, sidebar, cartes, tableau, footer), vérification de la sécurité de suppression, des exports/imports, de l'impression fiche, des fenêtres dockables, des notifications et de l'animation du graphique de rôles. Nettoyage des mentions obsolètes dans l'interface principale (les liens Portfolio/GitHub restent uniquement dans le footer). Projet pédagogique — données fictives uniquement.

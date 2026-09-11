@@ -260,6 +260,71 @@ Tests réalisés :
 Résultat :
 Micro-Dixie propose maintenant une fiche utilisateur détaillée et une interface plus proche d’un outil d’administration complet.
 
+Note : L'historique des versions est désormais consultable depuis l'interface via le bouton "Historique" dans le header (ouvre une modale listant DV1→DV9).
+
+## DV9.5 - Header, footer et navigation globale
+
+Date : 11/09/2026
+
+Objectif :
+Préparer une navigation partagée pour le Portfolio Lab JS en ajoutant un header moderne et un footer professionnel, sans modifier la logique métier de Micro-Dixie.
+
+Fonctionnalités ajoutées :
+- header global avec effet glass léger et menu responsive ;
+- liens : Accueil, Micro-Dixie, Démos et bouton Démo ;
+- footer professionnel avec mentions et liens vers portfolio/GitHub ;
+- préparation de la structure de navigation pour futures démos ;
+- modifications CSS et petit script JS pour le menu responsive.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+
+Tests réalisés :
+- vérification de l'ouverture/fermeture du menu responsive ;
+- vérification visuelle du header glass et du footer ;
+- vérification que les fonctionnalités Micro-Dixie (modale, import/export, stats) ne sont pas affectées.
+
+Résultat :
+Navigation et structure visuelle améliorées, prêtes à intégrer d'autres démonstrations du laboratoire.
+
+## DV10 - Stabilisation finale dashboard CRM
+
+Date : 11/09/2026
+
+Objectif :
+Finaliser et harmoniser Micro-Dixie CRM pour une présentation recruteur, sans ajouter de nouvelle fonctionnalité majeure.
+
+Fonctionnalités stabilisées :
+- interface dashboard CRM avec sidebar fixe, header système et footer professionnel 4 colonnes ;
+- fenêtres dockables (fiches utilisateur, historique) avec dock multi-fenêtres ;
+- exports CSV/JSON et impression fiche (compatibles Excel) ;
+- journal d'activité et notifications toast ;
+- sécurité de suppression (fiche ouverte/minimisée protégée, confirmation systématique) ;
+- gestion actif/inactif avec badges de statut ;
+- graphique animé de répartition des rôles, mis à jour sur toute action utilisateur ;
+- cohérence visuelle des couleurs de rôle et de statut, espacements harmonisés.
+
+Fichiers concernés :
+- index.html
+- css/style.css
+- js/app.js
+- README.md
+- docs/journal-versioning.md
+
+Tests réalisés :
+- vérification des fenêtres dockables (ouverture, fermeture, minimisation, restauration, dock) ;
+- vérification de la sécurité de suppression et du vidage complet ;
+- vérification des exports/imports et de l'impression fiche ;
+- vérification des notifications et du journal d'activité ;
+- vérification de l'animation du graphique de rôles après chaque action ;
+- vérification rapide du responsive.
+
+Résultat :
+Micro-Dixie CRM DV10 - dashboard CRM local de démonstration, pédagogique, données fictives uniquement, prêt pour une présentation recruteur.
+
 ## DV7 - Gestion avancée des données
 
 Date : 10/09/2026
