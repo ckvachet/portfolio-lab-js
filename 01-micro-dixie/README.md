@@ -1,67 +1,85 @@
-# Micro-Dixie
+# Micro-Dixie CRM
 
-## Objectif du projet
+Micro-Dixie CRM est un tableau de bord CRM local développé en HTML, CSS et JavaScript. Il centralise la gestion d'utilisateurs fictifs, le suivi des rôles, les statuts, les exports, l'impression de fiches et l'historique d'activité dans une interface admin structurée.
 
-Micro-Dixie est un mini tableau de bord d'administration local développé progressivement en HTML, CSS et JavaScript.
+## Objectif
 
-L'objectif est de construire une interface simple, propre et évolutive permettant de gérer des utilisateurs, leurs rôles et des modules activables.
+L'objectif est de fournir une base frontend claire pour un dashboard CRM : gestion utilisateur, visualisation des données, fenêtres de travail réutilisables, persistance locale et interactions proches d'un outil métier. La version actuelle fonctionne sans backend afin de rester directement testable dans un navigateur.
 
-## Version actuelle
+## Fonctionnalités principales
 
-Version actuelle : DV10 - Stabilisation finale dashboard CRM.
+- Tableau de bord CRM local.
+- Ajout, modification et suppression d'utilisateurs.
+- Gestion des rôles : administrateur, éditeur, observateur.
+- Gestion du statut actif ou inactif.
+- Tableau filtrable et recherchable.
+- Compteurs dynamiques.
+- Donut chart animé pour la répartition des rôles.
+- Historique d'activité local.
+- Notifications visuelles.
+- Fenêtres utilisateur déplaçables, minimisables et empilables.
+- Protection de suppression si une fiche utilisateur est ouverte ou minimisée.
+- Export JSON du tableau de bord.
+- Export CSV compatible tableur.
+- Impression propre d'une fiche utilisateur.
+- Thème clair / sombre.
+- Interface responsive.
+- Sidebar fixe avec sous-menus.
 
-Micro-Dixie CRM est un dashboard CRM local de démonstration pédagogique : sidebar fixe, header système avec heure locale, footer professionnel, tableau utilisateurs, fiches utilisateur dockables (dock multi-fenêtres), historique de versioning, export CSV/JSON et impression fiche, journal d'activité, notifications, thème clair/sombre, graphique animé de répartition des rôles, gestion actif/inactif et sécurité de suppression. Projet pédagogique — données fictives uniquement, aucun backend.
+## Stack technique
 
-## Fonctionnalités prévues
+- HTML5
+- CSS3
+- JavaScript vanilla
+- localStorage
+- Git
+- GitHub
 
-- ajout dynamique d’utilisateurs ;
-- validation simple du formulaire ;
-- messages d’erreur et de succès ;
-- suppression d’un utilisateur ;
-- compteur d’utilisateurs ;
-- badges visuels par rôle.
+Aucun framework et aucun backend ne sont utilisés dans cette version.
 
-- sauvegarde locale des utilisateurs ;
-- restauration des utilisateurs après rechargement ;
-- synchronisation du compteur avec les données sauvegardées.
+## Données et sécurité
 
-- recherche par nom/email ;
-- filtres par rôle ;
-- compteur total et compteur filtré ;
-- réinitialisation des filtres.
+Micro-Dixie CRM est une démonstration frontend locale. Les données utilisées doivent rester fictives dans cette version. Le stockage `localStorage` sert uniquement à simuler une persistance côté navigateur ; il n'est pas adapté aux données sensibles ou personnelles réelles.
 
-- import JSON des utilisateurs ;
-- export JSON des utilisateurs ;
-- chargement de données de démonstration ;
-- contrôle basique des fichiers importés ;
-- regroupement des actions de gestion des données ;
-- cartes statistiques par rôle ;
-- journal d'activité local ;
-- action de vidage complet avec confirmation ;
-- amélioration visuelle du tableau de bord.
+L'architecture peut toutefois évoluer vers une version complète avec frontend séparé, backend PHP, base de données SQL, authentification utilisateur, gestion des rôles, double authentification 2FA, validation serveur, journalisation et mesures de sécurité adaptées à une exploitation réelle ou commerciale.
 
+## Utilisation locale
 
-- fiche utilisateur détaillée en modale ;
-- ID utilisateur local (USR-xxxx) ;
-- avatar par initiales ;
-- champs adresse, localité, téléphone privé, téléphone professionnel et date de naissance ;
-- import/export compatibles avec les champs enrichis ;
-- mode clair/sombre ;
-- bouton retour haut de page ;
-- amélioration visuelle générale.
+1. Cloner ou télécharger le dépôt.
+2. Ouvrir le dossier `01-micro-dixie`.
+3. Ouvrir `index.html` dans un navigateur moderne.
+4. Utiliser le bouton `Charger une démonstration` pour tester rapidement les fonctionnalités.
 
-## Méthode de travail
+## Exports
 
-Le projet est construit par petites versions appelées DV.
+- JSON : sauvegarde ou transfert des données du tableau de bord.
+- CSV : ouverture et exploitation dans Excel ou LibreOffice Calc.
+- Impression : génération d'une fiche utilisateur lisible.
 
-Chaque étape est développée dans VS Code, testée, documentée puis versionnée avec Git et GitHub.
+## Versioning
 
-L'intelligence artificielle est utilisée comme appui technique, relire le code, proposer des corrections et améliorer la documentation.
+Le projet suit une progression par versions nommées DV.
 
-## DV9.5 — Header, footer et navigation
+- DV1 : interface statique.
+- DV2 : ajout utilisateur JavaScript.
+- DV3 : validation, suppression, compteur et badges.
+- DV4 : sauvegarde locale.
+- DV5 : recherche et filtres.
+- DV6 : tableau de bord local.
+- DV7 : thème et gestion UX.
+- DV8 : import/export et données de démonstration.
+- DV9 : fiche utilisateur avancée.
+- DV10 : stabilisation du dashboard CRM.
 
-Cette version prépare une navigation globale pour le Portfolio Lab JS : un header moderne (effet glass léger, menu responsive) et un footer professionnel. `Micro-Dixie` reste une démo intégrée au laboratoire et un lien vers l'accueil a été ajouté. Les chemins relatifs sont préservés.
+DV10 stabilise le dashboard CRM actuel et sert de base pour les prochaines versions du projet.
 
-## DV10 — Stabilisation finale dashboard CRM
+## Auteur
 
-Version finale de présentation : harmonisation visuelle (header, sidebar, cartes, tableau, footer), vérification de la sécurité de suppression, des exports/imports, de l'impression fiche, des fenêtres dockables, des notifications et de l'animation du graphique de rôles. Nettoyage des mentions obsolètes dans l'interface principale (les liens Portfolio/GitHub restent uniquement dans le footer). Projet pédagogique — données fictives uniquement.
+Christophe Kvachet
+
+- Portfolio : https://kvachet.be
+- GitHub projet : https://github.com/ckvachet/portfolio-lab-js/tree/main/01-micro-dixie
+
+## Statut
+
+Projet open source et pédagogique. Démonstration frontend locale. Données fictives uniquement dans cette version.
