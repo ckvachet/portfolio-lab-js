@@ -80,6 +80,12 @@ Christophe Kvachet
 - Portfolio : https://kvachet.be
 - GitHub projet : https://github.com/ckvachet/portfolio-lab-js/tree/main/01-micro-dixie
 
+- ## Démo en ligne
+
+Le dashboard Micro-Dixie CRM peut être testé directement depuis GitHub Pages :
+
+https://ckvachet.github.io/portfolio-lab-js/01-micro-dixie/
+
 ## Statut
 
 Projet open source et pédagogique. Démonstration frontend locale. Données fictives uniquement dans cette version.
